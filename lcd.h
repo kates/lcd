@@ -34,9 +34,30 @@
 	#error "LCD_D7 not defined!"
 #endif
 
+#ifndef LCD_COLUMNS
+#define LCD_COLUMNS 16
+#endif
+
+#ifndef LCD_ROWS
+#define LCD_ROWS 2
+#endif
+
+#define LCD_DATA_PINS LCD_D4 | LCD_D5 | LCD_D6 | LCD_D7
+#define LCD_CMD 0
+#define LCD_DATA 1
+#define LCD_PORT PORTB
+#define LCD_DIR DDRB
+
+#define LCD_HOME 0x80
+#define LCD_LINE_1 LCD_HOME
+#define LCD_LINE_2 LCD_HOME + 0x40
+#define LCD_LINE_3 LCD_HOME + 0x60
+#define LCD_LINE_4 LCD_HOME + 0x20
+
 void lcd_init(void);
 void lcd_writeln(const char *str);
 uint8_t lcd_write(const char *str);
 void lcd_go(uint8_t row, uint8_t col);
 void lcd_go_line(uint8_t line);
+
 #endif // __LCD_H__

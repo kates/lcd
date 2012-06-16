@@ -13,5 +13,9 @@
 #define LCD_D6 _BV(PB6)
 #define LCD_D7 _BV(PB7)
 
-// how many columns? default is 16
-//#define LCD_COLUMNS 16
+
+// how many rows and colums?
+// default is 16x2
+
+// #define LCD_COLUMNS 16
+// #define LCD_ROWS 2

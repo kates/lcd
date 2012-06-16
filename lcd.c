@@ -4,22 +4,6 @@
 #include "lcd_config.h"
 #include "lcd.h"
 
-#define LCD_DATA_PINS LCD_D4 | LCD_D5 | LCD_D6 | LCD_D7
-#define LCD_CMD 0
-#define LCD_DATA 1
-#define LCD_PORT PORTB
-#define LCD_DIR DDRB
-
-#define LCD_HOME 0x80
-#define LCD_LINE_1 LCD_HOME
-#define LCD_LINE_2 LCD_HOME + 0x40
-#define LCD_LINE_3 LCD_HOME + 0x60
-#define LCD_LINE_4 LCD_HOME + 0x20
-
-#ifndef LCD_COLUMNS
-#define LCD_COLUMNS 16
-#endif
-
 uint8_t lcd_pins[4] = {LCD_D4, LCD_D5, LCD_D6, LCD_D7};
 
 void lcd_send4(uint8_t data) {
