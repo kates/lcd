@@ -35,6 +35,8 @@
 #endif
 
 void lcd_init(void);
-void lcd_write(const char *c);
+void lcd_writeln(const char *str);
+uint8_t lcd_write(const char *str);
+void lcd_go(uint8_t row, uint8_t col);
 void lcd_go_line(uint8_t line);
 #endif // __LCD_H__

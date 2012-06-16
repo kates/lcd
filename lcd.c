@@ -70,18 +70,23 @@ void lcd_cmd(uint8_t data) {
   lcd_send(LCD_CMD, data);
 }
 
-void lcd_write(const char *str) {
-	uint8_t i = 0;
+uint8_t lcd_write(const char *str) {
+  uint8_t i = 0;
   while (*str) {
-		i++;
     lcd_char(*str++);
+    i++;
   }
+  return i;
+}
+
+void lcd_writeln(const char *str) {
+  uint8_t i = lcd_write(str);
 	while(i++ < LCD_COLUMNS) {
 		lcd_char(' ');
 	}
 }
 
-void lcd_init() {
+void lcd_init(void) {
   LCD_DIR |= LCD_RS | LCD_EN | LCD_DATA_PINS;
   LCD_PORT &= ~(LCD_RS | LCD_EN | LCD_DATA_PINS);
 
@@ -98,15 +103,18 @@ void lcd_init() {
   _delay_us(50);
 }
 
-void lcd_go_line(uint8_t line) {
-  if (line == 4) {
-    lcd_cmd(LCD_LINE_4);
-	} else if (line == 3) {
-    lcd_cmd(LCD_LINE_3);
-	} else if (line == 2) {
-    lcd_cmd(LCD_LINE_2);
+void lcd_go(uint8_t row, uint8_t col) {
+  if (row == 4) {
+    lcd_cmd(LCD_LINE_4 + col);
+	} else if (row == 3) {
+    lcd_cmd(LCD_LINE_3 + col);
+	} else if (row == 2) {
+    lcd_cmd(LCD_LINE_2 + col);
 	} else {
-    lcd_cmd(LCD_LINE_1);
+    lcd_cmd(LCD_LINE_1 + col);
   }
+}
+void lcd_go_line(uint8_t line) {
+  lcd_go(line, 0);
 }
 

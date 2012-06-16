@@ -9,14 +9,14 @@ int main(void) {
   while (1) {
     if (i ^= 1) {
       lcd_go_line(1);
-      lcd_write("Hello World!");
+      lcd_writeln("Hello World!");
       lcd_go_line(2);
-      lcd_write("AVR LCD Library");
+      lcd_writeln("AVR LCD Library");
     } else {
       lcd_go_line(1);
-      lcd_write("HD44780");
+      lcd_writeln("HD44780");
       lcd_go_line(2);
-      lcd_write("ST7066U");
+      lcd_writeln("ST7066U");
     }
     _delay_ms(2000);
   }
