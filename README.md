@@ -4,9 +4,10 @@
 See `lcd_config.h`
 
 ### API
-
 lcd_init(void)
+
 lcd_go_line(uint8_t line)
+
 lcd_write(const char *str)
 
 See `main.c` for usage.
