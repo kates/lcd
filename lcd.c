@@ -74,17 +74,21 @@ void lcd_init(void) {
   LCD_DIR |= LCD_RS | LCD_EN | LCD_DATA_PINS;
   LCD_PORT &= ~(LCD_RS | LCD_EN | LCD_DATA_PINS);
 
-  _delay_ms(20);
+  _delay_ms(20); // give lcd time to startup
+
   lcd_send4(0x03);
   _delay_ms(5);
-  lcd_send4(0x02);
-  _delay_us(200);
+
+  if (LCD_MODE == LCD_MODE_4) {
+    lcd_send4(0x02);
+    _delay_us(37);
+  }
+
   lcd_cmd(0x28);
   lcd_cmd(0x01);
   lcd_cmd(0x06);
-  _delay_us(1500);
+  _delay_us(1200);
   lcd_cmd(0x0C);
-  _delay_us(50);
 }
 
 void lcd_go(uint8_t row, uint8_t col) {
@@ -98,6 +102,7 @@ void lcd_go(uint8_t row, uint8_t col) {
     lcd_cmd(LCD_LINE_1 + col);
   }
 }
+
 void lcd_go_line(uint8_t line) {
   lcd_go(line, 0);
 }

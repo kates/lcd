@@ -42,6 +42,12 @@
 #define LCD_ROWS 2
 #endif
 
+#define LCD_MODE_4 4
+
+#ifndef LCD_MODE
+#define LCD_MODE LCD_MODE_4
+#endif
+
 #define LCD_DATA_PINS LCD_D4 | LCD_D5 | LCD_D6 | LCD_D7
 #define LCD_CMD 0
 #define LCD_DATA 1
