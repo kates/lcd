@@ -51,8 +51,6 @@
 #define LCD_DATA_PINS LCD_D4 | LCD_D5 | LCD_D6 | LCD_D7
 #define LCD_CMD 0
 #define LCD_DATA 1
-#define LCD_PORT PORTB
-#define LCD_DIR DDRB
 
 #define LCD_HOME 0x80
 #define LCD_LINE_1 LCD_HOME
